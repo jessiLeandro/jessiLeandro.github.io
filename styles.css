@@ -1,0 +1,93 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.sidebar {
+    background-color: #45a049;
+    width: 200px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 20px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    padding: 8px;
+    text-align: center;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+.sidebar ul li a:hover {
+    background-color: #388e3c;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 1em;
+    margin-left: 200px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: calc(100% - 200px);
+    box-sizing: border-box;
+}
+
+main {
+    padding: 2em;
+    margin-left: 200px;
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+footer {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 1em;
+    position: fixed;
+    bottom: 0;
+    width: calc(100% - 200px);
+    margin-left: 200px;
+}
+
+/* Estilos específicos para o código */
+pre {
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+}
+
+/* Estilos para a seção de vídeos */
+video {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 20px 0;
+}
+
+figcaption {
+    text-align: center;
+    font-style: italic;
+    color: #666;
+}

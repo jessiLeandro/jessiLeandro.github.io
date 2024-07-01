@@ -3,36 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Simples</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        header, footer {
-            background-color: #4CAF50;
-            color: white;
-            text-align: center;
-            padding: 1em;
-        }
-        main {
-            padding: 2em;
-            text-align: center;
-        }
-    </style>
+    <title>Página Principal</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Bem-vindo à Minha Página</h1>
-    </header>
+    <div id="common-content"></div>
 
     <main>
-        <p>Este é o conteúdo principal da página.</p>
+        <p>Está página conterá os relatórios dos experimentos realizados em sala da disciplina Visão Computacional</p>
     </main>
 
-    <footer>
-        <p>&copy; 2024 Minha Página. Todos os direitos reservados.</p>
-    </footer>
+    <script src="script.js"></script>
+    <script>
+        includeHTML();
+    </script>
 </body>
 </html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório Consolidado</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="common-content"></div>
+
+    <main>
+        <section>
+            <h1>Ambiente python</h1>
+        </section>
+
+        <section>
+            <h2>Ambiente python</h2>
+
+            <p><strong>Necessidades:</strong></p>
+            <ul>
+                <li>Python3</li>
+                <li>Miniconda3</li>
+                <li>OpenCV</li>
+            </ul>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        function includeHTML() {
+            var element = document.getElementById("common-content");
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "common.html", true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    element.innerHTML = xhr.responseText;
+                }
+            };
+            xhr.send();
+        }
+
+        includeHTML();
+    </script>
+</body>
+</html>

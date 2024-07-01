@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório Consolidado</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="common-content"></div>
+
+    <main>
+        <section>
+            <h1>Título do Relatório</h1>
+            <p><strong>Autores:</strong></p>
+            <ul>
+                <li>JESSI LEANDRO CASTRO - 11201810509</li>
+                <li>WELLINGTON ARAUJO DA SILVA - 11201722653</li>
+                <!-- Adicione mais autores conforme necessário -->
+            </ul>
+            <p><strong>Data de Realização dos Experimentos:</strong> 18 de Julho de 2024</p>
+            <p><strong>Data de Publicação do Relatório:</strong> 30 de Julho de 2024</p>
+        </section>
+
+        <section>
+            <h2>Introdução</h2>
+            <p>Na área de visão computacional, todo programa manipula entrada e saída de dados, que podem ser exibidos na tela ou armazenados em disco. A entrada inclui a leitura de imagens armazenadas em disco ou obtidas em tempo real de dispositivos como câmeras e webcams. Portanto, é fundamental compreender e dominar esses aspectos para o desenvolvimento nesta disciplina. No primeiro experimento, focaremos na leitura e captura de imagens, visando desenvolver essas habilidades essenciais.</p>
+        </section>
+
+        <section>
+            <h2>Procedimentos Experimentais</h2>
+
+            <h3>Ambiente:</h3>
+            <p>Para a realizar este laboratório é necessário ativar o ambiente virtual CV24, verificar a seção ambiente python.</p>
+
+            <h3>Parte 1:</h3>
+            <p>Processamento Básico nas Imagens e Vídeos.</p>
+            <p>Para essa primera etapa é necessário fazer o download do Lab1, que contém os arquivos necessarios para a realizar os próximos passos</p>
+
+            <h4>A) Leitura de imagem em arquivo:</h4>
+            <p>
+                O codigo a seguir é fornecido no roteiro do experimento, no arquivo “L1_1_img.py”, este realiza realiza a leitura e de imagem gravado num arquivo e mostra a imagem numa janela do linux.
+                Além disso, o programa permite salvar a imagem em arquivo.
+            </p>
+
+            <h5>L1_1_img.py (arquivo original)</h5>
+            <pre>
+                <code class="python">
+import numpy as np
+import cv2 as cv
+
+img = cv.imread('messi5.jpg',0)
+cv.imshow('image',img)
+k = cv.waitKey(0)
+if k == 27:         # wait for ESC key to exit
+    cv.destroyAllWindows()
+elif k == ord('s'): # wait for 's' key to save and exit
+    cv.imwrite('messigray.png',img)
+    cv.destroyAllWindows()
+                </code>
+            </pre>
+            <p><strong>por que a janela aberta não mostra a imagem colorida?</strong></p>
+
+            <p>
+                Ao executar-lo é possivel visualizar a imagem do messi em tons de cinza, isso ocorre pois o segundo parametro da função cv.imread foi definido como 0 (Falso),
+                se definirmos como 1 (True), a imagem passa a ser renderizada colorida, isso ocorre pois o segundo parametro da função é uma flag, que quando definida como verdadeira
+                sempre converte a imagem em uma imagem colorida BGR de 3 canais.
+            </p>
+
+            <h5>L1_1_img.py (arquivo modificado)</h5>
+            <pre>
+                <code class="python">
+import numpy as np
+import cv2 as cv
+
+img = cv.imread('messi5.jpg',1)
+cv.imshow('image',img)
+k = cv.waitKey(0)
+if k == 27:         # wait for ESC key to exit
+    cv.destroyAllWindows()
+elif k == ord('s'): # wait for 's' key to save and exit
+    cv.imwrite('messi_rgb.png',img)
+    cv.destroyAllWindows()
+                </code>
+            </pre>
+
+            <figure>
+                <img src="imgs/messi.jpg" alt="messi.jpg">
+                <figcaption>Imagem original.</figcaption>
+            </figure>
+
+            <figure>
+                <img src="imgs/messigray.png" alt="messigray.png">
+                <figcaption>Saída do código original.</figcaption>
+            </figure>
+
+            <figure>
+                <img src="imgs/janela_messi_gray.png" alt="janela_messi_gray.png">
+                <figcaption>Janela renderizada do código original.</figcaption>
+            </figure>
+
+            <figure>
+                <img src="imgs/messi_rgb.png" alt="messi_rgb.png">
+                <figcaption>Saída do código alterado.</figcaption>
+            </figure>
+
+            <figure>
+                <img src="imgs/janela_messi_rgb.png" alt="janela_messi_rgb.png">
+                <figcaption>Janela renderizada do código alterado.</figcaption>
+            </figure>
+
+
+            <h4>B) Leitura de vídeo em arquivo:</h4>
+            <p> 
+                O codigo a seguir também é fornecido no roteiro do experimento, no arquivo “L1_2_video.py”,
+                este realiza a leitura de um video gravado num arquivo e exibe a sequencia das imagems numa janela do
+                linux.
+            </p>
+            <pre>
+                <code class="python">
+import time
+import numpy as np
+import cv2 as cv
+
+cap = cv.VideoCapture('big_buck_bunny.mp4')
+
+while(cap.isOpened()):
+    ret, frame = cap.read()
+    
+    if ret==True:
+        # show the frame
+        cv.imshow('frame',frame)
+
+        #wait next frame by 40ms - 25fps
+        time.sleep(1/25.0) 
+        
+        if cv.waitKey(1) & 0xFF == ord('q'):
+            break
+    else:
+        break
+               
+cap.release()
+cv.destroyAllWindows()
+                </code>
+            </pre>
+
+            <p>
+                <strong>
+                    Modifique o programa para que as imagens sejam exibidas mais
+                    rápidamente e depois para que sejam exibidas mais lentamente. Responda:
+                    qual a explicação de alteração de velocidade de exibição, e apresente suas
+                    soluções detalhadamente.
+                </strong>
+            </p>
+
+            <p>
+                O código a cima faz o uso da função <i>time.sleep()</i> que adionar um delay no programa em segundos definido pelo parametro de entrada,
+                o programa original possi o valor de 1/25, que representa 1/25 (um vinte e cinco avos) de segundo, ou seja 40 milisegundos,
+                isso deixa o video com uma taxa de 25 quados por segundos (25 fps), para deixar o video mais rapido ou mais lento, basta alterar a taxa de quadros por segundo que é inversamente proporcional a velocidade,
+                ou seja quando maior esse valor mais mais acelerado será o video, e quando menor mais lento.
+            </p>
+
+            <p>
+                No experimento para deixar o video mais lento foi alterado o parametro da função <i>time.sleep()</i> para 1/5, deixadndo a 5 vezes mais lento que a versão original do código,
+                ou seja 5 fps, para deixar mais acelerado foi utilizado 1/60 que representa uma taxa de 60 fps.
+            </p>
+
+
+            <h4>C) Leitura de imagem de câmera:</h4>
+            <p> 
+                O codigo a seguir também é fornecido no roteiro do experimento, no arquivo “L1_3_webcam.py”,
+                este realiza a leitura de imagens da camera instalada no computador e exibe a sequencia das
+                imagens amostradas numa janela do linux.
+            </p>
+
+            <pre>
+                <code class="python">
+import numpy as np
+import cv2 as cv
+
+cap = cv.VideoCapture(0)
+
+if not cap.isOpened():
+    print("Cannot open camera")
+    exit()
+    
+while True:
+    # Capture frame-by-frame
+    ret, frame = cap.read()
+    # if frame is read correctly ret is True
+    if not ret:
+        print("Can't receive frame (stream end?). Exiting ...")
+        break
+    
+    # Display the resulting frame
+    cv.imshow('frame', frame)
+    
+    if cv.waitKey(1) == ord('q'):
+        break
+
+# When everything done, release the capture
+cap.release()
+cv.destroyAllWindows()
+                </code>
+            </pre>
+
+            <p>
+                <strong>
+                    Modifique o programa para que uma imagem da câmera seja salva
+                    num arquivo “foto1.png” no momento em que for clicada a tecla ‘x’ no
+                    teclado. Apresente o resultado e sua solução detalhadamente.
+                </strong>
+            </p>
+
+            <pre>
+                <code class="python">`
+import numpy as np
+import cv2 as cv
+
+
+cap = cv.VideoCapture(0)
+
+
+if not cap.isOpened():
+    print("Cannot open camera")
+    exit()
+    
+while True:
+    # Capture frame-by-frame
+    ret, frame = cap.read()
+    # if frame is read correctly ret is True
+    if not ret:
+        print("Can't receive frame (stream end?). Exiting ...")
+        break
+    
+    # Display the resulting frame
+    cv.imshow('frame', frame)
+
+    # Save image when press x
+    if cv.waitKey(1) == ord('x'):
+        cv.imwrite('foto1.png',frame)
+        
+    
+    if cv.waitKey(1) == ord('q'):
+        break
+
+
+# When everything done, release the capture
+cap.release()
+cv.destroyAllWindows()
+                </code>
+            </pre>
+
+            <h4>D) Gravação de vídeo da câmera:</h4>
+            <p> 
+                O codigo a seguir também é fornecido no roteiro do experimento, no arquivo “L1_4_webcap.py”,
+                este realiza a leitura de imagens da câmera, exibr a sequência de imagens numa nova janela do
+                Linux, e ao digitar a tecla “q” salva toda a sequência de imagens num arquivo
+                “saida.avi” no formato AVI de vídeo.
+            </p>
+
+            <pre>
+                <code class="python">
+import numpy as np
+import cv2 as cv
+cap = cv.VideoCapture(0)
+
+# Get current width of frame
+width = cap.get(cv.CAP_PROP_FRAME_WIDTH)   # float
+# Get current height of frame
+height = cap.get(cv.CAP_PROP_FRAME_HEIGHT) # float
+# Define Video Frame Rate in fps
+fps = 10.0
+
+# Define the codec and create VideoWriter object
+fourcc = cv.VideoWriter_fourcc(*'XVID')
+out = cv.VideoWriter('saida.avi', fourcc, fps, (int(width),int(height)) )
+
+while cap.isOpened():
+    ret, frame = cap.read()
+    if not ret:
+        print("Can't receive frame (stream end?). Exiting ...")
+        break
+    frame = cv.flip(frame, 0)
+    # write the flipped frame
+    out.write(frame)
+    cv.imshow('frame', frame)
+    if cv.waitKey(1) == ord('q'):
+        break
+
+# Release everything if job is finished
+cap.release()
+out.release()
+cv.destroyAllWindows()
+                </code>
+            </pre>
+
+            <video controls>
+                <source src="videos/big_buck_bunny.mp4" type="video/mp4">
+                Seu navegador não suporta o elemento de vídeo.
+            </video>
+            <figcaption>Video original</figcaption>
+
+
+            <p>
+                <strong>
+                    Modifique o programa para que as imagens gravadas estejam “normais” no arquivo de video salvo, e apresentem uma velocidade de
+                    exibição adequada. Apresente o resultado e sua solução detalhadamente.
+                </strong>
+            </p>
+
+            <pre>
+                <code class="python">
+import numpy as np
+import cv2 as cv
+cap = cv.VideoCapture(0)
+
+
+# Get current width of frame
+width = cap.get(cv.CAP_PROP_FRAME_WIDTH)   # float
+# Get current height of frame
+height = cap.get(cv.CAP_PROP_FRAME_HEIGHT) # float
+# Define Video Frame Rate in fps
+fps = 60.0
+
+# Define the codec and create VideoWriter object
+fourcc = cv.VideoWriter_fourcc(*'XVID')
+out = cv.VideoWriter('saidapbjeto.avi', fourcc, fps, (int(width),int(height)) )
+
+while cap.isOpened():
+    ret, frame = cap.read()
+    if not ret:
+        print("Can't receive frame (stream end?). Exiting ...")
+        break
+    frame = cv.flip(frame, -1)
+    # write the flipped frame
+    out.write(frame)
+    cv.imshow('frame', frame)
+    if cv.waitKey(1) == ord('q'):
+        break
+
+# Release everything if job is finished
+cap.release()
+out.release()
+cv.destroyAllWindows()
+                </code>
+            </pre>
+
+            <p>
+                A exibição do video gerado com o código original possui uma taxa de 10 fps (parametrizado na função cv.VideoWriter),
+                além disso os quadros estão de invertidos verticalmente e horizontalmente,
+                portanto para uma exibição adequada foi necessário alterar a taxa de quadros de armazenamento e rotacionar os flames capturados,
+                para isso bastou alterar a variavela fps para 60 (que é a taxa de captura da webcam usasda)
+                e alterar o segundo parametro da <i>cv.flip</i> que inicalmente estava definida com 0 para -1, isso faz com que o frame gire não apenas do eixo x, mas também do eixo y.
+            </p>
+
+            <iframe src="https://drive.google.com/file/d/1bg-Tharktfrwl6ngtTBuZSxVMx4mNSLP/preview" width="640" height="480" allow="autoplay"></iframe>
+            <figcaption>Video salvo</figcaption>
+
+            <h3>Parte 2:</h3>
+
+            <h4>
+                A) Obter com a webcam uma foto geral com TODOS os integrantes da EQUIPE,
+                sendo que cada um deve usar uma roupa de cor diferente, melhor se for com
+                as cores Vermelho, Verde e Azul destacadas. Cuidem para a iluminação ficar
+                boa. Podem usar qualquer editor de imagem caso necessitem “Compor” as
+                fotos individuais para formar a foto geral.
+            </h4>
+            
+            <h4>
+                B) Façam uma foto-montagem “Avatar”, juntando todos avatares numa única
+                imagem. Meu “Avatar” por exemplo, é o Pikachu... A ordem dos avatares
+                deve ser a mesma da foto geral. Podem usar qualquer editor de imagem para
+                “Compor” as fotos individuais que cada um da equipe vai fornecer.
+            </h4>
+
+            <h4>
+                C) Filmem com a webcam DOIS vídeos com pessoas e DOIS videos com um
+                objeto:
+
+                <ul>
+                    <li>um com mudanças lentas de movimento;</li>
+                    <li>e outro com mudanças rápidas de movimento.</li>
+                    <li>
+                        Em cada um dos vídeos os membros da equipe DEVEM ser diferentes.
+                        Podem ser apenas dois membros, um em cada vídeo, e sugiro escolherem
+                        os que possuem as melhores câmeras
+                    </li>
+                </ul>
+            </h4>
+        </section>
+
+        <section>
+            <h2>Análise e Discussão dos Estudos Realizados</h2>
+            <p>...</p>
+        </section>
+
+        <section>
+            <h2>Conclusões</h2>
+            <p>...</p>
+        </section>
+
+        <section>
+            <h2>Referências Consultadas</h2>
+            <p> 
+                OpenCV. Documentação OpenCV. Disponível em: https://docs.opencv.org/4.x/index.html. Acesso em: 30 jun. 2024.
+            </p>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        function includeHTML() {
+            var element = document.getElementById("common-content");
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "common.html", true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    element.innerHTML = xhr.responseText;
+                }
+            };
+            xhr.send();
+        }
+
+        includeHTML();
+    </script>
+</body>
+</html>

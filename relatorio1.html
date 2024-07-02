@@ -16,7 +16,6 @@
             <ul>
                 <li>JESSI LEANDRO CASTRO - 11201810509</li>
                 <li>WELLINGTON ARAUJO DA SILVA - 11201722653</li>
-                <!-- Adicione mais autores conforme necessário -->
             </ul>
             <p><strong>Data de Realização dos Experimentos:</strong> 18 de Julho de 2024</p>
             <p><strong>Data de Publicação do Relatório:</strong> 30 de Julho de 2024</p>
@@ -24,22 +23,27 @@
 
         <section>
             <h2>Introdução</h2>
-            <p>Na área de visão computacional, todo programa manipula entrada e saída de dados, que podem ser exibidos na tela ou armazenados em disco. A entrada inclui a leitura de imagens armazenadas em disco ou obtidas em tempo real de dispositivos como câmeras e webcams. Portanto, é fundamental compreender e dominar esses aspectos para o desenvolvimento nesta disciplina. No primeiro experimento, focaremos na leitura e captura de imagens, visando desenvolver essas habilidades essenciais.</p>
+            <p>
+                Na área de visão computacional, todo programa manipula a entrada e saída de dados, que podem ser exibidos na tela ou armazenados em disco.
+                A entrada inclui a leitura de imagens armazenadas em disco ou obtidas em tempo real de dispositivos como câmeras e webcams.
+                Portanto, é fundamental compreender e dominar esses aspectos para o desenvolvimento nesta disciplina.
+                No primeiro experimento, focaremos na leitura e captura de imagens, visando desenvolver essas habilidades essenciais.
+            </p>
         </section>
 
         <section>
             <h2>Procedimentos Experimentais</h2>
 
             <h3>Ambiente:</h3>
-            <p>Para a realizar este laboratório é necessário ativar o ambiente virtual CV24, verificar a seção ambiente python.</p>
+            <p>Para realizar este laboratório é necessário ativar o ambiente virtual CV24, verificar a seção ambiente python.</p>
 
             <h3>Parte 1:</h3>
             <p>Processamento Básico nas Imagens e Vídeos.</p>
-            <p>Para essa primera etapa é necessário fazer o download do Lab1, que contém os arquivos necessarios para a realizar os próximos passos</p>
+            <p>Para essa primeira etapa é necessário fazer o download do Lab1, que contém os arquivos necessários para a realizar os próximos passos</p>
 
             <h4>A) Leitura de imagem em arquivo:</h4>
             <p>
-                O codigo a seguir é fornecido no roteiro do experimento, no arquivo “L1_1_img.py”, este realiza realiza a leitura e de imagem gravado num arquivo e mostra a imagem numa janela do linux.
+                O código a seguir é fornecido no roteiro do experimento, no arquivo “L1_1_img.py”, este realiza realiza a leitura e de imagem gravado num arquivo e mostra a imagem numa janela do linux.
                 Além disso, o programa permite salvar a imagem em arquivo.
             </p>
 
@@ -62,8 +66,8 @@ elif k == ord('s'): # wait for 's' key to save and exit
             <p><strong>por que a janela aberta não mostra a imagem colorida?</strong></p>
 
             <p>
-                Ao executar-lo é possivel visualizar a imagem do messi em tons de cinza, isso ocorre pois o segundo parametro da função cv.imread foi definido como 0 (Falso),
-                se definirmos como 1 (True), a imagem passa a ser renderizada colorida, isso ocorre pois o segundo parametro da função é uma flag, que quando definida como verdadeira
+                Ao executar-lo é possível visualizar a imagem do messi em tons de cinza, isso ocorre pois o segundo parâmetro da função cv.imread foi definido como 0 (Falso),
+                se definirmos como 1 (True), a imagem passa a ser renderizada colorida, isso ocorre pois o segundo parâmetro da função é uma flag, que quando definida como verdadeira
                 sempre converte a imagem em uma imagem colorida BGR de 3 canais.
             </p>
 
@@ -112,8 +116,8 @@ elif k == ord('s'): # wait for 's' key to save and exit
 
             <h4>B) Leitura de vídeo em arquivo:</h4>
             <p> 
-                O codigo a seguir também é fornecido no roteiro do experimento, no arquivo “L1_2_video.py”,
-                este realiza a leitura de um video gravado num arquivo e exibe a sequencia das imagems numa janela do
+                O código a seguir também é fornecido no roteiro do experimento, no arquivo “L1_2_video.py”,
+                este realiza a leitura de um vídeo gravado num arquivo e exibe a sequência das imagens numa janela do
                 linux.
             </p>
             <pre>
@@ -154,22 +158,22 @@ cv.destroyAllWindows()
             </p>
 
             <p>
-                O código a cima faz o uso da função <i>time.sleep()</i> que adionar um delay no programa em segundos definido pelo parametro de entrada,
-                o programa original possi o valor de 1/25, que representa 1/25 (um vinte e cinco avos) de segundo, ou seja 40 milisegundos,
-                isso deixa o video com uma taxa de 25 quados por segundos (25 fps), para deixar o video mais rapido ou mais lento, basta alterar a taxa de quadros por segundo que é inversamente proporcional a velocidade,
-                ou seja quando maior esse valor mais mais acelerado será o video, e quando menor mais lento.
+                O código acima faz o uso da função <i>time.sleep()</i> que adicionar um delay no programa em segundos definido pelo parâmetro de entrada,
+                o programa original possui o valor de 1/25, que representa 1/25 (um vinte e cinco avos) de segundo, ou seja 40 milissegundos,
+                isso deixa o vídeo com uma taxa de 25 quadros por segundos (25 fps), para deixar o vídeo mais rápido do ou mais lento, basta alterar a taxa de quadros por segundo que é inversamente proporcional a velocidade,
+                ou seja quando maior esse valor mais acelerado será o vídeo, e quando menor mais lento.
             </p>
 
             <p>
-                No experimento para deixar o video mais lento foi alterado o parametro da função <i>time.sleep()</i> para 1/5, deixadndo a 5 vezes mais lento que a versão original do código,
+                No experimento para deixar o vídeo mais lento foi alterado o parâmetro da função <i>time.sleep()</i> para 1/5, deixando a 5 vezes mais lento que a versão original do código,
                 ou seja 5 fps, para deixar mais acelerado foi utilizado 1/60 que representa uma taxa de 60 fps.
             </p>
 
 
             <h4>C) Leitura de imagem de câmera:</h4>
             <p> 
-                O codigo a seguir também é fornecido no roteiro do experimento, no arquivo “L1_3_webcam.py”,
-                este realiza a leitura de imagens da camera instalada no computador e exibe a sequencia das
+                O código a seguir também é fornecido no roteiro do experimento, no arquivo “L1_3_webcam.py”,
+                este realiza a leitura de imagens da câmera instalada no computador e exibe a sequência das
                 imagens amostradas numa janela do linux.
             </p>
 
@@ -253,8 +257,8 @@ cv.destroyAllWindows()
 
             <h4>D) Gravação de vídeo da câmera:</h4>
             <p> 
-                O codigo a seguir também é fornecido no roteiro do experimento, no arquivo “L1_4_webcap.py”,
-                este realiza a leitura de imagens da câmera, exibr a sequência de imagens numa nova janela do
+                O código a seguir também é fornecido no roteiro do experimento, no arquivo “L1_4_webcap.py”,
+                este realiza a leitura de imagens da câmera, exibe a sequência de imagens numa nova janela do
                 Linux, e ao digitar a tecla “q” salva toda a sequência de imagens num arquivo
                 “saida.avi” no formato AVI de vídeo.
             </p>
@@ -347,15 +351,17 @@ cv.destroyAllWindows()
             </pre>
 
             <p>
-                A exibição do video gerado com o código original possui uma taxa de 10 fps (parametrizado na função cv.VideoWriter),
+                A exibição do vídeo gerado com o código original possui uma taxa de 10 fps (parametrizado na função cv.VideoWriter),
                 além disso os quadros estão de invertidos verticalmente e horizontalmente,
-                portanto para uma exibição adequada foi necessário alterar a taxa de quadros de armazenamento e rotacionar os flames capturados,
-                para isso bastou alterar a variavela fps para 60 (que é a taxa de captura da webcam usasda)
-                e alterar o segundo parametro da <i>cv.flip</i> que inicalmente estava definida com 0 para -1, isso faz com que o frame gire não apenas do eixo x, mas também do eixo y.
+                portanto para uma exibição adequada foi necessário alterar a taxa de quadros de armazenamento e rotacionar os frames capturados,
+                para isso bastou alterar a variável fps para 60 (que é a taxa de captura da webcam usada)
+                e alterar o segundo parâmetro da <i>cv.flip</i> que inicialmente estava definida com 0 para -1, isso faz com que o frame gire não apenas do eixo x, mas também do eixo y.
             </p>
 
-            <iframe src="https://drive.google.com/file/d/1bg-Tharktfrwl6ngtTBuZSxVMx4mNSLP/preview" width="640" height="480" allow="autoplay"></iframe>
-            <figcaption>Video salvo</figcaption>
+            <figure>
+                <iframe src="https://drive.google.com/file/d/1bg-Tharktfrwl6ngtTBuZSxVMx4mNSLP/preview" width="640" height="480" allow="autoplay"></iframe>
+                <figcaption>Video salvo</figcaption>
+            </figure>
 
             <h3>Parte 2:</h3>
 
@@ -399,28 +405,52 @@ cv.destroyAllWindows()
                 </ul>
             </h4>
 
-            <iframe src="https://drive.google.com/file/d/1p7QvwTB4tPWT-tnRpxazGPUd2XP3fogw/preview" width="640" height="480" allow="autoplay"></iframe>
-            <figcaption>Video com pessoa rápido</figcaption>
 
-            <iframe src="https://drive.google.com/file/d/1V2iByNXccdTvNSMa9KcwFULTS66cYYjp/preview" width="640" height="480" allow="autoplay"></iframe>
-            <figcaption>Video com objeto rápido</figcaption>
+            <figure>
+                <!-- <iframe src="https://drive.google.com/file/d/1p7QvwTB4tPWT-tnRpxazGPUd2XP3fogw/preview" width="640" height="480" allow="autoplay"></iframe> -->
+                <iframe src="https://drive.google.com/file/d/1bg-Tharktfrwl6ngtTBuZSxVMx4mNSLP/preview" width="640" height="480" allow="autoplay"></iframe>
+                <figcaption>Video com pessoa rápido</figcaption>
+            </figure>
 
-            <iframe src="https://drive.google.com/file/d/1KGx_PqGNu-kgOzPfI-BUJ2VHDSdu5gTr/preview" width="640" height="480" allow="autoplay"></iframe>
-            <figcaption>Video com pessoa lento</figcaption>
+            <figure>
+                <!-- <iframe src="https://drive.google.com/file/d/1V2iByNXccdTvNSMa9KcwFULTS66cYYjp/preview" width="640" height="480" allow="autoplay"></iframe> -->
+                <iframe src="https://drive.google.com/file/d/1_-hVqdxf8Fe8CefmyIE0iXi0DXL-ezQF/preview" width="640" height="480" allow="autoplay"></iframe>
+                <figcaption>Video com objeto rápido</figcaption>
+            </figure>
 
-            <iframe src="https://drive.google.com/file/d/1mOQbdKSCLSAN9rlW6ix6WMwB7osh1Dj9/preview" width="640" height="480" allow="autoplay"></iframe>
-            <figcaption>Video com objeto lento</figcaption>
 
+            <figure>
+                <iframe src="https://drive.google.com/file/d/1KGx_PqGNu-kgOzPfI-BUJ2VHDSdu5gTr/preview" width="640" height="480" allow="autoplay"></iframe>
+                <figcaption>Video com pessoa lento</figcaption>
+            </figure>
+
+            <figure>
+                <iframe src="https://drive.google.com/file/d/1mOQbdKSCLSAN9rlW6ix6WMwB7osh1Dj9/preview" width="640" height="480" allow="autoplay"></iframe>
+                <figcaption>Video com objeto lento</figcaption>
+            </figure>
+
+            <p>
+                O código utilizado para registar as imagens acima foram os desenvolvidos em sala, que já estão nesse relatório na parte 1.
+            </p>
         </section>
 
         <section>
             <h2>Análise e Discussão dos Estudos Realizados</h2>
-            <p>...</p>
+            <p>
+                Durante o experimento, foi percebida a importância da adequação da taxa de quadros por segundo (FPS),
+                tanto na exibição quanto no armazenamento. Em uma mesma sequência de imagens,
+                a velocidade do vídeo é proporcional à taxa de quadros por segundo. No experimento D da parte um,
+                notamos que o vídeo apresenta uma velocidade inesperada, visto que está um pouco acelerado.
+                Isso se dá pelo fato de que a taxa de atualização da webcam é menor que a taxa de quadros por segundo do vídeo armazenado,
+                sendo este de 60 FPS. Não tínhamos o valor exato da taxa de atualização da webcam, apenas o conhecimento a posteriori dado o registro acelerado do vídeo.
+            </p>
         </section>
 
         <section>
             <h2>Conclusões</h2>
-            <p>...</p>
+            <p>
+                Concluímos que entradas e saídas em processamento de imagens e de vídeo são etapas essenciais para o ciclo de desenvolvimento e aplicação de técnicas de visão computacional.
+            </p>
         </section>
 
         <section>

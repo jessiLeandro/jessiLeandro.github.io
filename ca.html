@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Contexto e Cenário de Aplicação (CA)</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div id="common-content"></div>
+        <main>
+            <h1 style="padding-top: 4pt;padding-left: 5pt;text-indent: 0pt;line-height: 114%;text-align: left;">
+                Contexto e Cenário de Aplicação Projeto de Tradução de LIBRAS
+            </h1>
+
+            <br/>
+
+            <p style="padding-left: 5pt;text-indent: 0pt;line-height: 114%;text-align: left;">
+                Diante dos desafios da inclusão de indivíduos surdos no contexto social e da necessidade de disseminar a Língua Brasileira de Sinais (LIBRAS)
+                entre todos os indivíduos (GUIMARÃES &amp; CRUZ, 2021), são necessários avanços no desenvolvimento de sistemas capazes de facilitar a comunicação
+                entre indivíduos surdos e aqueles que não dominam essa forma de comunicação. Neste contexto, surge o projeto de um tradutor de LIBRAS,
+                um sistema que visa eliminar barreiras linguísticas e promover uma inclusão mais efetiva.
+            </p>
+
+            <br/>
+
+            <p style="padding-left: 5pt;text-indent: 0pt;line-height: 114%;text-align: left;">
+                O objetivo principal deste sistema é captar os movimentos das mãos dos usuários por meio de uma câmera. Utilizando técnicas de processamento de imagens,
+                reconhecimento de padrões e visão computacional, o programa será capaz de interpretar esses gestos e traduzi-los em texto. Inicialmente,
+                o foco será na tradução dos gestos das vogais do alfabeto (A, E, I, O, U), fundamentais para a formação de palavras e frases básicas em português.
+            </p>
+
+            <br/>
+
+            <p style="padding-left: 5pt;text-indent: 0pt;line-height: 114%;text-align: left;">
+                A interatividade do usuário com o sistema será intuitiva e direta. Os usuários simplesmente realizarão os sinais diante da câmera do dispositivo,
+                e o sistema capturará as imagens necessárias para o reconhecimento dos gestos.
+            </p>
+            <p style="padding-left: 5pt;text-indent: 0pt;line-height: 114%;text-align: left;">
+                Posteriormente, o texto correspondente às letras será exibido na tela, permitindo a comunicação visual instantânea entre indivíduos surdos e ouvintes.
+            </p>
+
+            <br/>
+
+            <p style="padding-left: 5pt;text-indent: 0pt;line-height: 114%;text-align: left;">
+                Além de facilitar a comunicação cotidiana, o tradutor de LIBRAS pode ter aplicações abrangentes na educação e na promoção da acessibilidade.
+                Na área educacional, ele poderá ser utilizado como uma ferramenta de aprendizado e prática para estudantes e profissionais interessados em aprender LIBRAS,
+                tornando o processo de educação mais inclusivo e acessível. Para além disso, o sistema poderá evoluir para reconhecer e traduzir um maior número de sinais,
+                expressões faciais e gestos em movimento, expandindo seu potencial para a interpretação em tempo real, inclusive através de áudio.
+            </p>
+
+            <br/>
+
+            <p style="padding-left: 5pt;text-indent: 0pt;line-height: 114%;text-align: left;">
+                Com sua capacidade de transformar configurações de mãos em letras e palavras do português brasileiro, o tradutor de LIBRAS tem o objetivo de facilitar
+                a interação entre pessoas que se comunicam através de LIBRAS e aquelas que não dominam a linguagem, além de ser uma ferramenta facilitadora para
+                o aprendizado de LIBRAS. abrindo novas oportunidades de comunicação e entendimento mútuo em diversos contextos sociais, educacionais e profissionais.
+            </p>
+
+            <h1 style="padding-top: 4pt;padding-left: 5pt;text-indent: 0pt;text-align: left;">REFERÊNCIAS:</h1>
+            
+            <br/>
+
+            <p style="padding-left: 5pt;text-indent: 0pt;line-height: 114%;text-align: left;">
+                GUIMARÃES, Ueudison Alves. CRUZ, Renata Cristina Vilaça. <b>Os desafios da inclusão de libras no contexto educacional: revisão de literatura. </b>
+                Revista Científica Multidisciplinar Núcleo do Conhecimento. Ano. 06, Ed. 12, Vol. 02, pp. 75-91. Dezembro de 2021. ISSN: 2448-0959, Link de acesso:
+                <span style=" color: #1154CC; font-family:Arial, sans-serif; font-style: normal; font-weight: normal; text-decoration: underline; font-size: 12pt;">https://www.nucleodoconhecimento.com.br/educacao/inclusao-de-libras</span>,
+                DOI: 10.32749/nucleodoconhecimento.com.br/educacao/inclusao-de-libras
+            </p>
+        </main>
+
+        <script src="script.js"></script>
+        <script>
+            function includeHTML() {
+                var element = document.getElementById("common-content");
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", "common.html", true);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        element.innerHTML = xhr.responseText;
+                    }
+                };
+                xhr.send();
+            }
+
+            includeHTML();
+        </script>
+    </body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Modelagem Funcional do Sistema (MF)</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div id="common-content"></div>
+        <main>
+            <h1 style="padding-top: 4pt;padding-left: 5pt;text-indent: 0pt;line-height: 114%;text-align: left;">
+                Modelagem Funcional do Sistema (MF)
+            </h1>
+
+            <br/>
+
+            <p style="padding-left: 5pt;text-indent: 0pt;line-height: 114%;text-align: left;">
+                O fluxograma da Figura 1 exemplifica as etapas do código que será implementado para atingir os objetivos proposto na Etapa 1 (CA), composto por blocos de início ou fim de processo, tomada de decisões e de atividades. a seguir a descrição de cada bloco tomando uma leitura de cima para baixo:
+            </p>
+
+            <br/>
+
+            <p style="padding-left: 5pt;text-indent: 0pt;line-height: 114%;text-align: left;">
+                <ul>
+                    <li style="margin: 10px 0px">
+                        <strong>Início do processo</strong>: Start no programa, a partir da execução do programa em python “python3 start.py”.
+                    </li>
+                    <li style="margin: 10px 0px">
+                        <strong>Atividade:</strong> Definir dispositivo de câmera, serão listados os dispositivos conectados na máquina e nessa etapa o usuário irá interagir com a aplicação definindo qual dispositivo será utilizado, imputando via teclado o número do dispositivo.
+                    </li>
+                    <li style="margin: 10px 0px">
+                        <strong>Atividade:</strong> Capturar imagem, após definir o dispositivo de câmera o programa vai capturar uma imagem em tempo real.
+                    </li>
+                    <li style="margin: 10px 0px">
+                        <strong>Tomada de decisão:</strong> Capturou a imagem corretamente? se o programa não conseguiu capturar a imagem com sucesso o fluxo retorna para o processo de definir o dispositivo, caso contrário segue com o fluxograma.
+                    </li>
+                    <li style="margin: 10px 0px">
+                        <strong>Atividade:</strong> Tratamento de imagem, para conseguir identificar qual a letra (em libras) que o usuário está fazendo precisamos extrair alguns parâmetros da imagem, dentre eles estão, as posições das extremidades dos dedos e das falanges. Para esta atividade será utilizado técnicas de processamento de imagem e a linguagem Python com a API OpenCV.
+                    </li>
+                    <li style="margin: 10px 0px">
+                        <strong>Atividade:</strong> Classificação, dado os parâmetros extraídos da etapa anterior é possível identificar qual sinal que o usuário está fazendo, precisamos então classificar esse sinal a partir do padrão das posições de extremidades e falanges. Para esta atividade  será utilizado técnicas de aprendizado de máquina para identificar e classificar esses padrões - a técnica ainda não foi definida, mas talvez alguma de aprendizado supervisionado - com linguagem Python com a API TensorFlow.
+                    </li>
+                    <li style="margin: 10px 0px">
+                        <strong>Atividade:</strong> Exibir resultado, aqui o programa exibirá o resultado para o usuário, podendo ser uma vogal, caso consiga identificar e classificar o sinal feito, ou não exibirá nada, caso não consiga identificar nenhum sinal.
+                    </li>
+                    <li style="margin: 10px 0px">
+                        <strong>Tomada de decisão:</strong> Finalizar programa, se o usuário estiver pressionando a tecla “ESC” e chegar nessa etapa o fluxo deve seguir para o fim do processo, caso contrário deve voltar para a Atividade de “Capturar imagem”, criando assim um looping de capturar, processar, classificar e exibir resultados, até finalizar o programa ou não conseguir capturar uma imagem e ter que selecionar um novo dispositivo.
+                    </li>
+                    <li style="margin: 10px 0px">
+                        <strong>Fim do processo:</strong> Fim, finaliza a execução do programa.
+                    </li>
+                </ul>
+            </p>
+
+            <figure>
+                <img src="imgs/fluxograma.jpg" alt="fluxograma.jpg">
+                <figcaption>Figura 1</figcaption>
+            </figure>
+
+        </main>
+
+        <script src="script.js"></script>
+        <script>
+            function includeHTML() {
+                var element = document.getElementById("common-content");
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", "common.html", true);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        element.innerHTML = xhr.responseText;
+                    }
+                };
+                xhr.send();
+            }
+
+            includeHTML();
+        </script>
+    </body>
+</html>

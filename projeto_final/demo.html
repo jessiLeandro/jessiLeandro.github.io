@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório Consolidado</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div id="common-content"></div>
+
+    <main>
+        <section>
+            <h1>
+                Ambiente
+            </h1>
+
+            <p>
+                Para execução desse laboratório é necessário ter um ambiente do python configurado,
+                recomenda-se que utilize o miniconda para criar um novo ambiente python.
+                Após criar e ativar o ambiente é necessário instalar as seguintes bibliotecas:
+            </p>
+
+            <ul>
+                <li>openCv</li>
+                <ul>
+                    <li><strong>comando:</strong> pip install opencv-python</li>
+                </ul>
+
+                <li>opencv-contrib-python</li>
+                <ul>
+                    <li><strong>comando:</strong> pip install opencv-contrib-python</li>
+                </ul>
+
+                <li>numpy</li>
+                <ul>
+                    <li><strong>comando:</strong> pip install numpy</li>
+                </ul>
+
+                <li>time</li>
+                <ul>
+                    <li><strong>comando:</strong> pip install python-time</li>
+                </ul>
+
+                <li>mideiapipe</li>
+                <ul>
+                    <li><strong>comando:</strong> pip install mediapipe</li>
+                </ul>
+
+                <li>sklearn</li>
+                <ul>
+                    <li><strong>comando:</strong> pip install scikit-learn</li>
+                </ul>
+
+                <li>joblib</li>
+                <ul>
+                    <li><strong>comando:</strong> pip install joblib</li>
+                </ul>
+            </ul>
+
+            <!-- <p><strong>Autores:</strong></p>
+            <ul>
+                <li>JESSI LEANDRO CASTRO - 11201810509</li>
+                <li>WELLINGTON ARAUJO DA SILVA - 11201722653</li>
+            </ul>
+            <p><strong>Data de Realização dos Experimentos:</strong> 02 de Julho de 2024</p>
+            <p><strong>Data de Publicação do Relatório:</strong> 16 de Julho de 2024</p> -->
+        </section>
+
+        <section>
+            <h1>
+                Execução
+            </h1>
+
+            <h3>1 - Calibração</h3>
+
+            <p>                
+                &emsp;A calibração de imagem é processo de ajustar e corrigir as distorções de uma imagem capturada por câmeras,
+                para que ela corresponda com precisão às características físicas do ambiente real.
+            </p>
+
+            <h4>1.1 - Obter imagens para calibração</h4>
+
+            <p>
+                &emsp;Para calibração de câmera é necessário capturar 15 imagens de um tabuleiro 8x6 (usado nas aula anteriores),
+                está captura será feita a partir da execução do código "capture_images.py",
+                que ao ser executado cria um loop de execução que captura uma imagem a cada 10 segundos,
+                o ideal é que as imagens capturadas captem diferentes ângulos,
+                por isso os 10 segundos entre as capturas, haverá um time na própria imagem,
+                quando o time zerar a imagem será salva automaticamente, para encerrar o script basta pressionar esc,
+                mas não encerre antes de capturar 15 imagens, pois será necessária para o próximo passo,
+                as imagens capturadas que vão além da décima quinta não serão usadas,
+                mas não trará nenhum prejuízo para o experimento.
+            </p>
+
+            <h4>1.2 - Extrair parâmetros intrínsecos e extrínsecos da câmera</h4>
+
+            <p>
+                &emsp;Com as imagens capturadas no passo anterior podemos agora obter os parâmetros intrínsecos e extrínsecos da câmera através da execução do código "calibrate.py",
+                que extrai esses parâmetros e os armazena para corrigir distorções de imagens nos passos posteriores.
+            </p>
+
+
+            <h3>2 - Criar dataset</h3>
+
+            <p>
+                &emsp;Precisamos criar nosso próprio dataset para treinar um classificador capaz de prever qual o letra em LIBRAS está sendo feita,
+                para criação deste dataset é necessário executar o codigo "capiture2dataset.py",
+                ele cria um laço infinito e só é interrompido quando o usuário pressionar a tecla esc,
+                enquanto estiver no laço é possível capturar imagens pressionando as letras: <strong>a</strong>, <strong>e</strong>, <strong>i</strong>, <strong>o</strong> ou <strong>u</strong>,
+                que salvará em sua respectiva pasta do dataset,
+                é importante que ao pressionar cada tecla que o usuário esteja fazendo o sinal em LIBRAS da letra correspondente,
+                idealmente varie o posicionamento, afastamento, inclinação e até mesmo quem faz o sinal,
+                a alta diversidade na composição do dataset é importante para prevenir over fitness,
+                para nosso modelo variação de iluminação ou tom de pele é irrelevante,
+                pois apenas as coordenadas dos principais pontos da mão serão levados em consideração,
+                portanto diferença no tamanho traz mais riqueza de diversidade para o dataset do que tom de pele.
+                Para cada letra tente obter pelo menos 30 imagens.
+            </p>
+            <p>
+                <strong>NOTA:</strong> no final da página tem uma imagens com o sinais das vogais em LIBRAS
+            </p>
+
+            <h3>3 - Treinar um classificador</h3>
+
+            <p>
+                &emsp;O treinamento do modelo é realizado a partir da execução do código "classificator.py",
+                que como o auxilio da biblioteca sklearn, usa o dataset, obtido na etapa anterior,
+                para criar um classificador.
+            </p>
+
+
+            <h3>4 - Fazer predições em real-time</h3>
+
+            <p>
+                &emsp;Com um classificador treinado podemos fazer predições em tempo real,
+                para isso execute o código "predict.py",
+                ele cria um laço que é interrompido se pressionado a tecla esc,
+                no laço ele captura uma imagem em tempo real da webcam usando a biblioteca openCV,
+                distorce a imagem a partir dos parâmetros intrínsecos e extrínsecos da câmera (Etapa 1),
+                faz o mapeamento da mão, então enfim faz a predição do sinal com base no mapeamento da mão.
+            </p>
+        </section>
+
+
+        <section>
+            <figure>
+                <img src="../imgs/vogais_libras.jpg" alt="vogais_libras.jpg" style="max-width: 700px;">
+                <figcaption>Referencia de vogias em LIBRAS.</figcaption>
+            </figure>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        function includeHTML() {
+            var element = document.getElementById("common-content");
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "../common.html", true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    element.innerHTML = xhr.responseText;
+                }
+            };
+            xhr.send();
+        }
+
+        includeHTML();
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</body>
+</html>

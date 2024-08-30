@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Relatório Final</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div id="common-content"></div>
+
+    <main>
+      <section>
+        <h1>Relatório Final</h1>
+        <h1>SISTEMA DE TRADUÇÃO DE LIBRAS</h1>
+
+        <p><strong>Autores:</strong></p>
+        <ul>
+          <li>JESSI LEANDRO CASTRO - 11201810509</li>
+          <li>WELLINGTON ARAUJO DA SILVA - 11201722653</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>INTRODUÇÃO</h2>
+        <p>
+          O objetivo deste documento é relatar o processo de concepção e
+          desenvolvimento de um sistema de visão computacional focado em
+          identificar configurações de mão presentes no vocabulário da Língua
+          Brasileira de Sinais (LIBRAS), a fim de contribuir na discussão e
+          evolução da acessibilidade na tecnologia. A seguir, será apresentado o
+          cenário de aplicação do projeto, a modelagem funcional do sistema, os
+          código-fontes que compõem o projeto, um roteiro para execução do mesmo
+          e as conclusões obtidas.
+        </p>
+
+        <h3>Cenário de Aplicação (CA)</h3>
+        <p>
+          Diante dos desafios da inclusão de indivíduos surdos no contexto
+          social e da necessidade de disseminar a Língua Brasileira de Sinais
+          (LIBRAS) entre todos os indivíduos (GUIMARÃES & CRUZ, 2021), são
+          necessários avanços no desenvolvimento de sistemas capazes de
+          facilitar a comunicação entre indivíduos surdos e aqueles que não
+          dominam essa forma de comunicação. Neste contexto, surge o projeto de
+          um tradutor de LIBRAS, um sistema que visa eliminar barreiras
+          linguísticas e promover uma inclusão mais efetiva. O objetivo
+          principal deste sistema é captar os movimentos das mãos dos usuários
+          por meio de uma câmera. Utilizando técnicas de processamento de
+          imagens, reconhecimento de padrões e visão computacional, o programa
+          será capaz de interpretar esses gestos e traduzi-los em texto.
+          Inicialmente, o foco será na tradução dos gestos das vogais do
+          alfabeto (A, E, I, O, U), fundamentais para a formação de palavras e
+          frases básicas em português. A interatividade do usuário com o sistema
+          será intuitiva e direta. Os usuários simplesmente realizarão os sinais
+          diante da câmera do dispositivo, e o sistema irá capturar as imagens
+          necessárias para o reconhecimento dos gestos. Posteriormente, o texto
+          correspondente às letras será exibido na tela, permitindo a
+          comunicação visual instantânea entre indivíduos surdos e ouvintes.
+          Além de facilitar a comunicação cotidiana, o tradutor de LIBRAS pode
+          ter aplicações abrangentes na educação e na promoção da
+          acessibilidade. Na área educacional, ele poderá ser utilizado como uma
+          ferramenta de aprendizado e prática para estudantes e profissionais
+          interessados em aprender LIBRAS, tornando o processo de educação mais
+          inclusivo e acessível. Para além disso, o sistema poderá evoluir para
+          reconhecer e traduzir um maior número de sinais, expressões faciais e
+          gestos em movimento, expandindo seu potencial para a interpretação em
+          tempo real, inclusive através de áudio. Com sua capacidade de
+          transformar configurações de mãos em letras e palavras do português
+          brasileiro, o tradutor de LIBRAS tem o objetivo de facilitar a
+          interação entre pessoas que se comunicam através de LIBRAS e aquelas
+          que não dominam a linguagem, além de ser uma ferramenta facilitadora
+          para o aprendizado de LIBRAS. abrindo novas oportunidades de
+          comunicação e entendimento mútuo em diversos contextos sociais,
+          educacionais e profissionais.
+        </p>
+      </section>
+
+      <section>
+        <h2>MATERIAIS E MÉTODOS</h2>
+
+        <h3>Modelagem Funcional do Sistema</h3>
+        <p>
+          O fluxograma da Figura 1 exemplifica as etapas do código que será
+          implementado para atingir os objetivos proposto na Etapa 1 (CA),
+          composto por blocos de início ou fim de processo, tomada de decisões e
+          de atividades. A seguir a descrição de cada bloco tomando uma leitura
+          de cima para baixo:
+        </p>
+
+        <p></p>
+        <ul>
+          <li>
+            <strong>Início do processo: </strong>Start no programa, a partir da
+            execução do programa em python “python3 start.py”.
+          </li>
+          <li>
+            <strong>Atividade: </strong>Definir dispositivo de câmera, serão
+            listados os dispositivos conectados na máquina e nessa etapa o
+            usuário irá interagir com a aplicação definindo qual dispositivo
+            será utilizado, imputando via teclado o número do dispositivo.
+          </li>
+          <li>
+            <strong>Atividade: </strong>Capturar imagem, após definir o
+            dispositivo de câmera o programa vai capturar uma imagem em tempo
+            real.
+          </li>
+
+          <li>
+            <strong>Tomada de decisão: </strong>Capturou a imagem corretamente?
+            se o programa não conseguiu capturar a imagem com sucesso o fluxo
+            retorna para o processo de definir o dispositivo, caso contrário
+            segue com o fluxograma.
+          </li>
+          <li>
+            <strong>Atividade: </strong>Tratamento de imagem, para conseguir
+            identificar qual a letra (em libras) que o usuário está fazendo
+            precisamos extrair alguns parâmetros da imagem, dentre eles estão,
+            as posições das extremidades dos dedos e das falanges. Para esta
+            atividade será utilizado técnicas de processamento de imagem e a
+            linguagem Python com a API OpenCV.
+          </li>
+          <li>
+            <strong>Atividade: </strong>Classificação, dado os parâmetros
+            extraídos da etapa anterior é possível identificar qual sinal que o
+            usuário está fazendo, precisamos então classificar esse sinal a
+            partir do padrão das posições de extremidades e falanges. Para esta
+            atividade será utilizado técnicas de aprendizado de máquina para
+            identificar e classificar esses padrões - a técnica ainda não foi
+            definida, mas talvez alguma de aprendizado supervisionado - com
+            linguagem Python com a API TensorFlow.
+          </li>
+          <li>
+            <strong>Atividade: </strong>Exibir resultado, aqui o programa
+            exibirá o resultado para o usuário, podendo ser uma vogal, caso
+            consiga identificar e classificar o sinal feito, ou não exibirá
+            nada, caso não consiga identificar nenhum sinal.
+          </li>
+          <li>
+            <strong>Tomada de decisão: </strong>Finalizar programa, se o usuário
+            estiver pressionando a tecla “ESC” e chegar nessa etapa o fluxo deve
+            seguir para o fim do processo, caso contrário deve voltar para a
+            Atividade de “Capturar imagem”, criando assim um looping de
+            capturar, processar, classificar e exibir resultados, até finalizar
+            o programa ou não conseguir capturar uma imagem e ter que selecionar
+            um novo dispositivo.
+          </li>
+          <li>
+            <strong>Fim do processo: </strong>Fim, finaliza a execução do
+            programa.
+          </li>
+        </ul>
+        <div
+          style="
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+          "
+        >
+          <figure>
+            <img src="../imgs/fluxograma.jpg" alt="fluxograma.jpg" />
+            <figcaption style="display: flex; justify-content: center">
+              Figura 1: Modelamento Funcional do Projeto
+            </figcaption>
+          </figure>
+        </div>
+        <h3>Implementação do Sistema</h3>
+        <p>
+          O sistema foi desenvolvido em linguagem Python, utilizando as
+          seguintes bibliotecas:
+        </p>
+
+        <ul>
+          <li>API OpenCV;</li>
+          <li>OpenCV-contrib-python;</li>
+          <li>Numpy;</li>
+          <li>Python-time;</li>
+          <li>Mediapipe;</li>
+          <li>SkLearn;</li>
+          <li>Joblib</li>
+        </ul>
+        <p>
+          Os seguintes arquivos foram desenvolvidos para a realização do
+          projeto:
+        </p>
+
+        <ul>
+          <li>
+            <strong>capture_images.py</strong>Esse código tem a função de
+            capturar imagens de um tabuleiro 6x8 para fazer a calibração da
+            câmera que será usada no projeto.
+          </li>
+          <li>
+            <strong>calibrate.py</strong>Utilizando as imagens capturadas
+            anteriormente, esse arquivo realiza a calibragem da câmera, processo
+            que corrige distorções de uma imagem para que ela corresponda à
+            realidade com maior precisão.
+          </li>
+          <li>
+            <strong>capture2dataset.py</strong>Este arquivo é responsável por
+            criar um dataset para treinamento do nosso tradutor de libras.
+            Durante sua execução, é possível capturar imagens de cada
+            configuração de mão e salvá-las pressionando as teclas A, E, I, O, U
+            do teclado.
+          </li>
+          <li>
+            <strong>classificator.py</strong>Esse script utiliza o dataset
+            criado na etapa anterior para treinar nosso classificador, tornando
+            possível identificar letras em Libras no arquivo seguinte. Esse
+            arquivo também exibe a acurácia e o relatório de classificação.
+          </li>
+          <li>
+            <strong>predict.py</strong>Por fim, este arquivo utiliza o modelo
+            treinado na etapa anterior para identificar gestos em Libras feitos
+            diante da câmera e exibir em tela a letra correspondente,
+            funcionando como o tradutor de libras que o projeto se propõe.
+          </li>
+        </ul>
+
+        <p>
+          Após definido o dataset, o <strong>classificator.py</strong> divide
+          aleatoriamente o conjunto de dados em 80% dados de treinamento e 20%
+          dados de teste. Sendo assim, a cada execução do treinamento do modelo,
+          teremos um conjunto de dados de treinamento diferente e, por
+          consequência, medidas de desempenho distintas. Como exemplo, foi
+          obtido o seguinte resultando em uma execução do
+          <strong>classificator.py</strong>:
+        </p>
+
+        <h3>Laboratório Experimental</h3>
+        <p>
+          Os passos abaixo relatam como configurar o ambiente e como executar os
+          procedimentos para execução do projeto:
+        </p>
+
+        <h4>Configuração de Ambiente</h4>
+        <p>
+          Para execução desse laboratório é necessário ter um ambiente do python
+          configurado, recomenda-se que utilize o miniconda para criar um novo
+          ambiente python. Após criar e ativar o ambiente é necessário instalar
+          as seguintes bibliotecas:
+        </p>
+
+        <table>
+          <tbody>
+            <tr>
+              <th scope="row">
+                <pre><code class="python">OpenCV: </code></pre>
+              </th>
+              <td>
+                <pre><code class="python">pip install opencv-python</code></pre>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <pre><code class="python">opencv-contrib: </code></pre>
+              </th>
+              <td>
+                <pre><code class="python">pip install opencv-contrib-python</code></pre>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <pre><code class="python">numpy: </code></pre>
+              </th>
+              <td>
+                <pre><code class="python">pip install numpy</code></pre>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <pre><code class="python">time: </code></pre>
+              </th>
+              <td>
+                <pre><code class="python">pip install python-time</code></pre>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <pre><code class="python">mediapipe: </code></pre>
+              </th>
+              <td>
+                <pre><code class="python">pip install mediapipe</code></pre>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <pre><code class="python">sklearn: </code></pre>
+              </th>
+              <td>
+                <pre><code class="python">pip install scikit-learn</code></pre>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <pre><code class="python">joblib: </code></pre>
+              </th>
+              <td>
+                <pre><code class="python">pip install joblib</code></pre>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h4>Execução</h4>
+        <p><i>1 - Calibração</i></p>
+        <p>
+          A calibração de imagem é processo de ajustar e corrigir as distorções
+          de uma imagem capturada por câmeras, para que ela corresponda com
+          precisão às características físicas do ambiente real.
+        </p>
+
+        <p><i>1.1 - Obter imagens para calibração</i></p>
+        <p>
+          Para calibração de câmera é necessário capturar 15 imagens de um
+          tabuleiro 8x6 (usado nas aula anteriores), está captura será feita a
+          partir da execução do código "capture_images.py", que ao ser executado
+          cria um loop de execução que captura uma imagem a cada 10 segundos, o
+          ideal é que as imagens capturadas captem diferentes ângulos, por isso
+          os 10 segundos entre as capturas, haverá um time na própria imagem,
+          quando o time zerar a imagem será salva automaticamente, para encerrar
+          o script basta pressionar esc, mas não encerre antes de capturar 15
+          imagens, pois será necessária para o próximo passo, as imagens
+          capturadas que vão além da décima quinta não serão usadas, mas não
+          trará nenhum prejuízo para o experimento.
+        </p>
+
+        <p>
+          <i>1.2 - Extrair parâmetros intrínsecos e extrínsecos da câmera</i>
+        </p>
+        <p>
+          Com as imagens capturadas no passo anterior podemos agora obter os
+          parâmetros intrínsecos e extrínsecos da câmera através da execução do
+          código "calibrate.py", que extrai esses parâmetros e os armazena para
+          corrigir distorções de imagens nos passos posteriores.
+        </p>
+
+        <p>
+          <i>2 - Criar Dataset</i>
+        </p>
+        <p>
+          Precisamos criar nosso próprio dataset para treinar um classificador
+          capaz de prever qual o letra em LIBRAS está sendo feita, para criação
+          deste dataset é necessário executar o codigo "capiture2dataset.py",
+          ele cria um laço infinito e só é interrompido quando o usuário
+          pressionar a tecla esc, enquanto estiver no laço é possível capturar
+          imagens pressionando as letras: a, e, i, o ou u, que salvará em sua
+          respectiva pasta do dataset, é importante que ao pressionar cada tecla
+          que o usuário esteja fazendo o sinal em LIBRAS da letra
+          correspondente, idealmente varie o posicionamento, afastamento,
+          inclinação e até mesmo quem faz o sinal, a alta diversidade na
+          composição do dataset é importante para prevenir over fitness, para
+          nosso modelo variação de iluminação ou tom de pele é irrelevante, pois
+          apenas as coordenadas dos principais pontos da mão serão levados em
+          consideração, portanto diferença no tamanho traz mais riqueza de
+          diversidade para o dataset do que tom de pele. Para cada letra tente
+          obter pelo menos 30 imagens.
+        </p>
+        <div
+          style="
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+          "
+        >
+          <figure>
+            <img
+              src="../imgs/vogais_libras.jpg"
+              alt="vogais_libras.jpg"
+              style="max-width: 700px"
+            />
+            <figcaption style="display: flex; justify-content: center">
+              Figura 2: Referência de vogais em LIBRAS
+            </figcaption>
+          </figure>
+        </div>
+        <p>
+          <i>3 - Treinar um classificador</i>
+        </p>
+        <p>
+          O treinamento do modelo é realizado a partir da execução do código
+          "classificator.py", que como o auxilio da biblioteca sklearn, usa o
+          dataset, obtido na etapa anterior, para criar um classificador.
+        </p>
+
+        <p>
+          <i>4 - Fazer prediçõesm em real-time</i>
+        </p>
+        <p>
+          Com um classificador treinado podemos fazer predições em tempo real,
+          para isso execute o código "predict.py", ele cria um laço que é
+          interrompido se pressionado a tecla esc, no laço ele captura uma
+          imagem em tempo real da webcam usando a biblioteca openCV, distorce a
+          imagem a partir dos parâmetros intrínsecos e extrínsecos da câmera
+          (Etapa 1), faz o mapeamento da mão, então enfim faz a predição do
+          sinal com base no mapeamento da mão.
+        </p>
+      </section>
+
+      <section>
+        <h2>RESULTADOS E CONCLUSÕES</h2>
+        <p>
+          Nos testes de campo experimentais, o projeto foi apresentado a outros
+          grupos, que tiveram a oportunidade de utilizar o sistema.
+        </p>
+        <p>
+          O sistema foi apresentado com as etapas de calibrar câmera e
+          treinamento de modelo já realizado a fim de agilizar o processo.
+          Durante os testes, os alunos identificaram que a precisão das
+          respostas oscilava de acordo com a distância entre a mão e a câmera.
+        </p>
+        <p>
+          Para mitigar esse problema, o dataset foi complementado com mais
+          imagens de cada letra capturadas mais próximas da câmera. Assim, o
+          modelo passou a identificar com melhor precisão as configurações de
+          mão realizadas próximo à câmera.
+        </p>
+        <p>
+          As imagens abaixo mostram a execução correta do projeto, identificando
+          as vogais propostas:
+        </p>
+        <!-- IMAGENS DAS MÃOS -->
+        <div
+          style="
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+          "
+        >
+          <figure>
+            <img src="../imgs/img_A.png" alt="A" style="max-width: 300px" />
+            <figcaption style="display: flex; justify-content: center">
+              A
+            </figcaption>
+          </figure>
+
+          <figure>
+            <img src="../imgs/img_E.png" alt="E" style="max-width: 300px" />
+            <figcaption style="display: flex; justify-content: center">
+              E
+            </figcaption>
+          </figure>
+
+          <figure>
+            <img src="../imgs/img_I.png" alt="I" style="max-width: 300px" />
+            <figcaption style="display: flex; justify-content: center">
+              I
+            </figcaption>
+          </figure>
+
+          <figure>
+            <img src="../imgs/img_O.png" alt="O" style="max-width: 300px" />
+            <figcaption style="display: flex; justify-content: center">
+              O
+            </figcaption>
+          </figure>
+
+          <figure>
+            <img src="../imgs/img_U.png" alt="U" style="max-width: 300px" />
+            <figcaption style="display: flex; justify-content: center">
+              U
+            </figcaption>
+          </figure>
+        </div>
+        <p>Como sugestões de aprimoramentos, sugere-se:</p>
+
+        <ul>
+          <li>
+            Redimensionar as imagens do dataset para o treinamento e durante a
+            captura de predição, para obter maior precisão na classificação das
+            imagens;
+          </li>
+          <li>
+            Adicionar mais classes no modelo, abrangendo as demais letras do
+            alfabeto;
+          </li>
+          <li>Adicionar uma classe para gesto/letra não identificada;</li>
+          <li>
+            Abordar letras que cuja configuração de mãos em LIBRAS demandam
+            movimento, como a letra J e Z.
+          </li>
+        </ul>
+        <p>
+          Mesmo com limitações, identificou-se que o projeto cumpre sua proposta
+          de identificar vogais em LIBRAS utilizando visão computacional,
+          contribuindo para a acessibilidade na tecnologia e fomentando futuros
+          projetos no ramo.
+        </p>
+      </section>
+
+      <section>
+        <h2>Referências Bibliográficas</h2>
+        <p
+          style="
+            padding-left: 5pt;
+            text-indent: 0pt;
+            line-height: 114%;
+            text-align: left;
+          "
+        >
+          GUIMARÃES, Ueudison Alves. CRUZ, Renata Cristina Vilaça.
+          <b
+            >Os desafios da inclusão de libras no contexto educacional: revisão
+            de literatura.
+          </b>
+          Revista Científica Multidisciplinar Núcleo do Conhecimento. Ano. 06,
+          Ed. 12, Vol. 02, pp. 75-91. Dezembro de 2021. ISSN: 2448-0959, Link de
+          acesso:
+          <span
+            style="
+              color: #1154cc;
+              font-family: Arial, sans-serif;
+              font-style: normal;
+              font-weight: normal;
+              text-decoration: underline;
+              font-size: 12pt;
+            "
+            >https://www.nucleodoconhecimento.com.br/educacao/inclusao-de-libras</span
+          >, DOI:
+          10.32749/nucleodoconhecimento.com.br/educacao/inclusao-de-libras
+        </p>
+
+        <p
+          style="
+            padding-left: 5pt;
+            text-indent: 0pt;
+            line-height: 114%;
+            text-align: left;
+          "
+        >
+          OpenCV -
+          <span
+            style="
+              color: #1154cc;
+              font-family: Arial, sans-serif;
+              font-style: normal;
+              font-weight: normal;
+              text-decoration: underline;
+              font-size: 12pt;
+            "
+            >https://opencv.org/</span
+          >
+        </p>
+        <p
+          style="
+            padding-left: 5pt;
+            text-indent: 0pt;
+            line-height: 114%;
+            text-align: left;
+          "
+        >
+          OpenCV Contrib Python -
+          <span
+            style="
+              color: #1154cc;
+              font-family: Arial, sans-serif;
+              font-style: normal;
+              font-weight: normal;
+              text-decoration: underline;
+              font-size: 12pt;
+            "
+            >https://pypi.org/project/opencv-contrib-python/</span
+          >
+        </p>
+        <p
+          style="
+            padding-left: 5pt;
+            text-indent: 0pt;
+            line-height: 114%;
+            text-align: left;
+          "
+        >
+          NumPy -
+          <span
+            style="
+              color: #1154cc;
+              font-family: Arial, sans-serif;
+              font-style: normal;
+              font-weight: normal;
+              text-decoration: underline;
+              font-size: 12pt;
+            "
+            >https://numpy.org/</span
+          >
+        </p>
+        <p
+          style="
+            padding-left: 5pt;
+            text-indent: 0pt;
+            line-height: 114%;
+            text-align: left;
+          "
+        >
+          MediaPipe -
+          <span
+            style="
+              color: #1154cc;
+              font-family: Arial, sans-serif;
+              font-style: normal;
+              font-weight: normal;
+              text-decoration: underline;
+              font-size: 12pt;
+            "
+            >https://ai.google.dev/edge/mediapipe/solutions/guide?hl=pt-br</span
+          >
+        </p>
+        <p
+          style="
+            padding-left: 5pt;
+            text-indent: 0pt;
+            line-height: 114%;
+            text-align: left;
+          "
+        >
+          SKLearn -
+          <span
+            style="
+              color: #1154cc;
+              font-family: Arial, sans-serif;
+              font-style: normal;
+              font-weight: normal;
+              text-decoration: underline;
+              font-size: 12pt;
+            "
+            >https://scikit-learn.org/0.21/documentation.html</span
+          >
+        </p>
+        <p
+          style="
+            padding-left: 5pt;
+            text-indent: 0pt;
+            line-height: 114%;
+            text-align: left;
+          "
+        >
+          JobLib -
+          <span
+            style="
+              color: #1154cc;
+              font-family: Arial, sans-serif;
+              font-style: normal;
+              font-weight: normal;
+              text-decoration: underline;
+              font-size: 12pt;
+            "
+            >https://joblib.readthedocs.io/en/stable/</span
+          >
+        </p>
+      </section>
+
+      <script src="script.js"></script>
+      <script>
+        function includeHTML() {
+          var element = document.getElementById("common-content");
+          var xhr = new XMLHttpRequest();
+          xhr.open("GET", "../common.html", true);
+          xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+              element.innerHTML = xhr.responseText;
+            }
+          };
+          xhr.send();
+        }
+
+        includeHTML();
+      </script>
+    </main>
+  </body>
+</html>

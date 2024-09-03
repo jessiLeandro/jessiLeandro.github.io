@@ -1,3 +1,8 @@
+# JESSI LEANDRO CASTRO - 11201810509
+# WELLINGTON ARAUJO DA SILVA - 11201722653
+# Predição
+# executar: python3 predict.py
+
 import cv2
 import mediapipe as mp
 import time

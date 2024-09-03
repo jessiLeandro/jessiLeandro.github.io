@@ -1,3 +1,8 @@
+# JESSI LEANDRO CASTRO - 11201810509
+# WELLINGTON ARAUJO DA SILVA - 11201722653
+# Caputura Imagem Para Treinamento
+# executar: python3 capture2dataset.py
+
 import cv2
 import numpy as np 
 

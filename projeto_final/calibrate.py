@@ -1,3 +1,8 @@
+# JESSI LEANDRO CASTRO - 11201810509
+# WELLINGTON ARAUJO DA SILVA - 11201722653
+# Calibração
+# executar: python3 calibrate.py
+
 import numpy as np 
 import cv2
 from tqdm import tqdm

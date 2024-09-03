@@ -1,3 +1,8 @@
+# JESSI LEANDRO CASTRO - 11201810509
+# WELLINGTON ARAUJO DA SILVA - 11201722653
+# Caputura Imagem Para Calibração
+# executar: python3 capture_images.py
+
 import numpy as np
 import cv2
 import time
